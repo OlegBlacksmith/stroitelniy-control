@@ -1,0 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.wrapper{
+  width: 1158px;
+}
+
+.section-title{
+  font-size: 48px;
+  font-family: 'Bebas Neue Cyrillic', sans-serif;
+  color: #0B5457;
+}
