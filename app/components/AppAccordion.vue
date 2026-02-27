@@ -108,7 +108,7 @@ const toggle = (id: number) => {
 
 .accordion-text {
   font-family: "Russo One", sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
   text-align: left;
 }
