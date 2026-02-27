@@ -66,12 +66,11 @@ const sendForm = async () => {
     return;
   }
 
-  // Email для твоей модели
   const emailData: Email = {
     name: form.name.trim(),
     email: form.email.trim(),
     connectionType: form.communication,
-    phone: form.phone.trim(), // добавь в интерфейс Email, если нет
+    phone: form.phone.trim(),
   };
 
   try {
@@ -233,7 +232,6 @@ const sendForm = async () => {
   color: rgba(6, 46, 48, 1);
 }
 
-/* Контейнеры инпутов и селекта занимают всю ширину */
 .input,
 .select-container {
   position: relative;
@@ -241,7 +239,6 @@ const sendForm = async () => {
   width: 100%;
 }
 
-/* Лейблы */
 .label {
   font-size: 16px;
   font-family: "Oswald", sans-serif;
@@ -249,7 +246,6 @@ const sendForm = async () => {
   font-weight: 400;
 }
 
-/* Базовый стиль для всех полей ввода */
 .basic {
   width: 100%;
   height: 32px;
@@ -260,7 +256,6 @@ const sendForm = async () => {
   display: block;
 }
 
-/* Селект такой же ширины, как инпуты */
 select {
   width: 100%;
   height: 36px;
