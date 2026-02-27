@@ -2,12 +2,50 @@ html {
   scroll-behavior: smooth;
 }
 
-.wrapper{
+.wrapper {
   width: 1158px;
 }
 
-.section-title{
+.section-title {
   font-size: 48px;
-  font-family: 'Bebas Neue Cyrillic', sans-serif;
-  color: #0B5457;
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 400;
+  color: #0b5457;
+}
+
+.modal-title {
+  font-family: "PT Sans Narrow", sans-serif;
+}
+
+@media (max-width: 991px) {
+  .wrapper {
+    width: 100vw;
+  }
+}
+
+/* МОБИЛЬНЫЕ (767px-) — СКРЫТЬ КАРТИНКУ */
+@media (max-width: 767px) {
+  .wrapper {
+    width: 100vw;
+  }
+}
+
+/* МАЛЕНЬКИЕ ТЕЛЕФОНЫ (479px-) */
+@media (max-width: 479px) {
+  .wrapper {
+    width: 100vw;
+  }
+}
+
+/* КРОХОТНЫЕ */
+@media (max-width: 359px) {
+  .wrapper {
+    width: 100vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .add-margin {
+    margin-left: 20px;
+  }
 }
