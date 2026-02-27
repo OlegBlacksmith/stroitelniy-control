@@ -7,31 +7,40 @@ export const sendEmailController = async (
 ) => {
   const config = useRuntimeConfig();
 
-  // 🔥 ЛОГ ДАННЫХ ФОРМЫ
-  console.log('📤 Форма данные:', {
+  console.log("📤 Форма данные:", {
     name: email.name,
     phone: email.phone,
     email: email.email,
-    connectionType: email.connectionType
+    connectionType: email.connectionType,
   });
 
   try {
     const transporter = createSmtpTransporter(emailType);
 
     const mailOptions = {
-      from: `"${email.name}" <${emailType === "partner" ? config.partnerEmail! : config.orderEmail!}>`,
+      from: `"${email.name}" <${
+        emailType === "partner" ? config.partnerEmail! : config.orderEmail!
+      }>`,
       to: emailType === "partner" ? config.partnerEmail! : config.orderEmail!,
       replyTo: email.email,
-      subject: `${emailType === "partner" ? "💼 Заявка партнёра" : "📞 Требуется консультация"} от ${email.name}`,
+      subject: `${
+        emailType === "partner"
+          ? "💼 Заявка партнёра"
+          : "📞 Требуется консультация"
+      } от ${email.name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #2d56e8;">Новая заявка <strong>${emailType.toUpperCase()}</strong></h2>
           
           <div style="background: #f8f9ff; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <p><strong>👤 Имя:</strong> ${email.name.replace(/</g, '&lt;')}</p>
+            <p><strong>👤 Имя:</strong> ${email.name.replace(/</g, "&lt;")}</p>
             <p><strong>📱 Телефон:</strong> ${email.phone}</p>
-            <p><strong>✉️ Email:</strong> <a href="mailto:${email.email}">${email.email}</a></p>
-            <p><strong>💬 Как связаться:</strong> ${email.connectionType === "Phone" ? "Телефон" : "Email"}</p>
+            <p><strong>✉️ Email:</strong> <a href="mailto:${email.email}">${
+        email.email
+      }</a></p>
+            <p><strong>💬 Как связаться:</strong> ${
+              email.connectionType === "Phone" ? "Телефон" : "Email"
+            }</p>
           </div>
           
           <p><em>Заявка с сайта</em></p>
@@ -45,12 +54,11 @@ Email: ${email.email}
 Связь: ${email.connectionType}`,
     };
 
-    // 🔥 ЛОГ ПЕРЕД ОТПРАВКОЙ
-    console.log('📧 mailOptions:', {
+    console.log("📧 mailOptions:", {
       from: mailOptions.from,
       to: mailOptions.to,
       subject: mailOptions.subject,
-      hasHtml: !!mailOptions.html
+      hasHtml: !!mailOptions.html,
     });
 
     await transporter.sendMail(mailOptions);
@@ -60,8 +68,8 @@ Email: ${email.email}
     console.error("❌ Email Error:", err.message);
     return {
       success: false,
-      error: err.response?.message || err.message || "Не удалось отправить письмо",
+      error:
+        err.response?.message || err.message || "Не удалось отправить письмо",
     };
   }
 };
-
