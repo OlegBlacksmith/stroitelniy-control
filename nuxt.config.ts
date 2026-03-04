@@ -66,7 +66,7 @@ export default defineNuxtConfig({
         { property: "og:image", content: "/og-image.jpg" }, // положи в public/
       ],
       link: [
-        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "icon", type: "image/x-icon", href: "/favicon.svg" },
         { rel: "canonical", href: "https://stroy-kontrol-ufa.ru" },
       ],
     },
