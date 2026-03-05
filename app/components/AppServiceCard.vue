@@ -127,9 +127,9 @@ const padding = "20px 50px";
     font-family: "PT Sans Narrow", sans-serif, sans-serif;
   }
 
-  .card-body > *:not(.card-bg){
+  /* .card-body > *:not(.card-bg){
     padding-bottom: 10px;
-  }
+  } */
 }
 
 /* КРОХОТНЫЕ */
