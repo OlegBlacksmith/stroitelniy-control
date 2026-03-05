@@ -48,9 +48,9 @@ defineEmits<{
 
 /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ (479px-) */
 @media (max-width: 479px) {
-  .order-button {
+  /* .order-button {
     padding: 20px 50px;
-  }
+  } */
 
   .button-text {
     font-family: "Roboto", sans-serif;
