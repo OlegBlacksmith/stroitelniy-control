@@ -21,6 +21,7 @@ const form = reactive({
 });
 
 const agree = ref(false);
+const showSuccess = ref(false);
 
 const emailAddress = computed(() => {
   return props.type === "partner"
@@ -46,6 +47,7 @@ watch(
         communication: "Phone",
       });
       agree.value = false;
+      showSuccess.value = false;
     }
   },
 );
@@ -91,7 +93,7 @@ const sendForm = async () => {
 
     if (response.success) {
       console.log("✅ Форма отправлена на:", emailAddress.value);
-      close();
+      showSuccess.value = true;
     } else {
       throw new Error(response.error || "Неизвестная ошибка сервера");
     }
@@ -113,7 +115,7 @@ const sendForm = async () => {
           </button>
         </div>
 
-        <div class="main-container">
+        <div class="main-container" v-if="!showSuccess">
           <div class="input">
             <p class="label">ФИО</p>
             <input
@@ -163,12 +165,34 @@ const sendForm = async () => {
               Подтверждаю, что ознакомлен с
               <NuxtLink href="/documents" class="confidential-link">
                 политикой конфиденциальности и обработки персональных данных,
-              </NuxtLink> согласен на обработку.
+              </NuxtLink>
+              согласен на обработку.
             </span>
           </label>
         </div>
 
-        <button class="send-button" @click="sendForm" :disabled="!agree">
+        <div v-else class="success-container">
+          <img
+            src="~/assets/images/gif/paper-letter.gif"
+            alt="Заявка отправлена!"
+            class="success-sticker"
+            width="200"
+            height="133"
+            loading="eager"
+          />
+          <p class="success-title">Заявка отправлена</p>
+          <p class="success-text">
+            Спасибо! Мы свяжемся с Вами в ближайшее время.
+          </p>
+          <!-- <button class="send-button" @click="close">Закрыть</button> -->
+        </div>
+
+        <button
+          v-if="!showSuccess"
+          class="send-button"
+          @click="sendForm"
+          :disabled="!agree"
+        >
           отправить
         </button>
       </div>
@@ -309,7 +333,35 @@ h3 {
   background-color: #4c70f4;
 }
 
-.confidential-link{
+.success-container {
+  padding-top: 30px;
+  text-align: center;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: rgba(6, 46, 48, 1);
+  padding-bottom: 10px;
+}
+
+.success-text {
+  font-size: 14px;
+  color: rgba(6, 46, 48, 0.8);
+  padding-bottom: 20px;
+}
+
+.confidential-link {
   text-decoration-line: underline;
+}
+
+.success-title {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 24px;
+}
+
+.success-text {
+  font-family: "Russo One", sans-serif;
+  font-size: 16px;
 }
 </style>
